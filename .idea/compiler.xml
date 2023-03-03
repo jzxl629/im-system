@@ -15,7 +15,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
-      <module name="im-system" options="" />
+      <module name="im-system" options="-parameters" />
       <module name="service" options="-parameters" />
     </option>
   </component>
