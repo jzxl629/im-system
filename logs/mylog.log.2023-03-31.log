@@ -11,3 +11,16 @@
 2023-03-31 14:20:21 -Tomcat started on port(s): 8000 (http) with context path ''
 2023-03-31 14:20:21 -Started ServiceApplication in 2.244 seconds (JVM running for 3.283)
 2023-03-31 14:20:36 -Shutting down ExecutorService 'applicationTaskExecutor'
+2023-03-31 19:16:02 -Starting ServiceApplication on sp9rkle with PID 17644 (C:\Users\jackl\IdeaProjects\im-system\service\target\classes started by jackl in C:\Users\jackl\IdeaProjects\im-system)
+2023-03-31 19:16:02 -The following profiles are active: dev
+2023-03-31 19:16:03 -Tomcat initialized with port(s): 8000 (http)
+2023-03-31 19:16:03 -Initializing ProtocolHandler ["http-nio-8000"]
+2023-03-31 19:16:03 -Starting service [Tomcat]
+2023-03-31 19:16:03 -Starting Servlet engine: [Apache Tomcat/9.0.37]
+2023-03-31 19:16:03 -Initializing Spring embedded WebApplicationContext
+2023-03-31 19:16:03 -Root WebApplicationContext: initialization completed in 748 ms
+2023-03-31 19:16:03 -Initializing ExecutorService 'applicationTaskExecutor'
+2023-03-31 19:16:04 -Starting ProtocolHandler ["http-nio-8000"]
+2023-03-31 19:16:04 -Tomcat started on port(s): 8000 (http) with context path ''
+2023-03-31 19:16:04 -Started ServiceApplication in 1.812 seconds (JVM running for 2.297)
+2023-03-31 19:16:05 -Shutting down ExecutorService 'applicationTaskExecutor'
