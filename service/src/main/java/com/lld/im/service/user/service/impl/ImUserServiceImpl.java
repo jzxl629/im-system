@@ -1,15 +1,16 @@
 package com.lld.im.service.user.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lld.im.common.ResponseVO;
 import com.lld.im.common.enums.DelFlagEnum;
 import com.lld.im.common.enums.UserErrorCode;
 import com.lld.im.common.exception.ApplicationException;
-import com.lld.im.service.group.service.ImGroupService;
 import com.lld.im.service.user.dao.ImUserDataEntity;
 import com.lld.im.service.user.dao.mapper.ImUserDataMapper;
-import com.lld.im.service.user.model.req.*;
+import com.lld.im.service.user.model.req.DeleteUserReq;
+import com.lld.im.service.user.model.req.GetUserInfoReq;
+import com.lld.im.service.user.model.req.ImportUserReq;
+import com.lld.im.service.user.model.req.ModifyUserInfoReq;
 import com.lld.im.service.user.model.resp.GetUserInfoResp;
 import com.lld.im.service.user.model.resp.ImportUserResp;
 import com.lld.im.service.user.service.ImUserService;
@@ -21,48 +22,35 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-/**
- * @description:
- * @author: lld
- * @version: 1.0
- */
 @Service
 public class ImUserServiceImpl implements ImUserService {
 
     @Autowired
     ImUserDataMapper imUserDataMapper;
 
-
-    @Autowired
-    ImGroupService imGroupService;
-
     @Override
     public ResponseVO importUser(ImportUserReq req) {
-
-        if(req.getUserData().size() > 100){
-            return ResponseVO.errorResponse(UserErrorCode.IMPORT_SIZE_BEYOND);
+        if(req.getUserData().size() > 100) {
+            //TODO too many return
         }
 
-        ImportUserResp resp = new ImportUserResp();
         List<String> successId = new ArrayList<>();
         List<String> errorId = new ArrayList<>();
 
-        for (ImUserDataEntity data:
-                req.getUserData()) {
+        req.getUserData().forEach(e->{
             try {
-                data.setAppId(req.getAppId());
-                int insert = imUserDataMapper.insert(data);
-                if(insert == 1){
-                    successId.add(data.getUserId());
+                e.setAppId(req.getAppId());
+                int insert = imUserDataMapper.insert(e);
+                if(insert == 1) {
+                    successId.add(e.getUserId());
                 }
-            }catch (Exception e){
-                e.printStackTrace();
-                errorId.add(data.getUserId());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                errorId.add(e.getUserId());
             }
-        }
-
+        });
+        ImportUserResp resp = new ImportUserResp();
         resp.setErrorId(errorId);
         resp.setSuccessId(successId);
         return ResponseVO.successResponse(resp);
@@ -169,5 +157,4 @@ public class ImUserServiceImpl implements ImUserService {
         }
         throw new ApplicationException(UserErrorCode.MODIFY_USER_ERROR);
     }
-
 }
