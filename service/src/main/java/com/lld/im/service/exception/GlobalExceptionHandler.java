@@ -1,4 +1,4 @@
-package com.lld.im.service.user.exception;
+package com.lld.im.service.exception;
 
 import com.lld.im.common.BaseErrorCode;
 import com.lld.im.common.ResponseVO;
